@@ -13,7 +13,7 @@ Whether you're a student, researcher, or security professional, StegoVault lets 
 - 💧 **Watermark your images** with either a logo or text using the custom BlendMark algorithm.
 - 🔏 **Encrypt watermarks** with AES, making them accessible only with the right key.
 - 🧪 **Detect tampering** using SHA-256 hashes at every step (original → watermarked → steganographed).
-- 🔔 **Get real-time notifications** through dropdown alerts powered by Django Channels.
+- 🔔 **Get real-time notifications** through dropdown alerts powered by Django messages.
 - 👤 **Manage your account**, update your profile or password, and upload a profile picture.
 - 📩 **Reach out via support**, whether logged in or not — your queries go straight to the developer.
 
