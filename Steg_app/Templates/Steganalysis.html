@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- <head>
+    <link src="{% static 'css/steganography.css'}" rel="stylesheet">
+</head> -->
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <section class="text-center mb-5">
+                            <h2 class="h2 mb-4">
+                                Image Steganalysis
+                            </h2>
+                            <hr style="border-color: white;">
+                            <p class="text-muted mb-4">
+                                Detect Hidden Messages in Images
+                            </p>
+                            <p class="text-muted mb-4">
+                                Use our advanced steganalysis tool to detect hidden messages within images.
+                            </p>
+                            <!-- <img alt="A detailed illustration of image steganography process" class="img-fluid mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/OjlwScxYtjV4vlfFxqwetsEUGhkLWj1pTO05Yx0ozVQ.jpg" width="600"/>
+                             -->
+                            <hr style="border-color: white;">
+                        </section>
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                How It Works
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 1: Upload your image" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Upload.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 1: Upload Image
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Choose the image you want to analyze for hidden messages.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 2: Select Analysis Method" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Analysis.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 2: Select Analysis Method
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Choose the analysis method that best suits your needs.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 3: Perform Analysis" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Algorithm.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 3: Perform Analysis
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Run the analysis to detect any hidden messages within the image.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 3: View Results" class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Download.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 4: View Results
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                View the results of the analysis to see if any hidden messages were
+                                                detected.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Steganalysis Process</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <form action="{% url 'steganalysis'%}" method="POST"
+                                            enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="image">
+                                                    Upload Image:
+                                                </label>
+                                                <input class="form-control" id="image" name="image" type="file"
+                                                    required />
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <label for="encoding_method">
+                                                    Select Analysis Method:
+                                                </label>
+                                                <select class="form-control" id="encoding_method"
+                                                    name="encoding_method">
+                                                    <option value="LSB">
+                                                        LSB (Least Significant Bit)
+                                                    </option>
+                                                    <option value="DCT">
+                                                        DCT (Discrete Cosine Transform)
+                                                    </option>
+                                                    <option value="DWT">
+                                                        DWT (Discrete Wavelet Transform)
+                                                    </option>
+                                                </select>
+                                            </div> -->
+                                            
+                                            <div class="d-flex justify-content-between">
+                                                <button class="btn btn-success" type="submit" style="font-size: medium; font-weight: 800;">
+                                                    Perform Steganalysis
+                                                </button>
+                                                <a type="submit" href="{% url 'steg'%}"
+                                                    class="btn btn-outline-primary"
+                                                    style="font-size: medium; font-weight: 800;">Steganography</a>
+                                            </div>
+                                        </form>
+                                        
+                                        {% if uploaded_image_url %}
+
+                                        <div class="row align-items-center" id="messagecontainer">
+
+                                            <!-- Image view start -->
+
+                                            <div class="card-body col-md-6" id="uploadedImage">
+                                                <h4>Uploaded Image:</h4><br>
+                                                <img src="{{ uploaded_image_url }}" alt="Uploaded Image"
+                                                    class="img-fluid">
+                                            </div>
+                                            {% endif %}
+                                            <!-- Image view end -->
+
+                                            <!-- Message display start -->
+                                            {% if decoded_message %}
+                                            <div class=" card-body col-md-6" id="decodedMessage">
+                                                <h4>Decoded Message:</h4>
+                                                <p>{{ decoded_message }}</p>
+                                                {% else %}
+                                                <p>No message decoded yet.</p>
+                                            </div>
+                                            {% endif %}
+                                            <!-- Message display end -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <section class=" mt-4 mb-5">
+                            <h3 class="h3 mb-4">
+                                Features
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="High security feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Accuracy.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                High Accuracy
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Our steganalysis tool uses advanced algorithms to ensure
+                                                high accuracy
+                                                in detecting hidden messages.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="User-friendly interface feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Friendly.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                User-Friendly
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                The interface is designed to be intuitive and easy to use
+                                                for everyone.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Fast processing feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Processing.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Fast Processing
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Quickly analyze images for hidden messages without any
+                                                delay.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Cross-platform compatibility feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Platform.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Cross-Platform
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Our application works seamlessly on all major platforms and
+                                                devices.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <script>
+                            setTimeout(function(){
+                                let messagecontainer = document.getElementById('messagecontainer');
+                                if(messagecontainer){
+                                    messagecontainer.style.transition= "opacity 0.5s";
+                                    messagecontainer.style.opacity = "1" //fade out effect
+                                    setTimeout(() => messagecontainer.remove(), 500)  // Remove from DOM
+                                }
+                            }, 5000);
+                            // window.onload = function () {
+                            //     // Check if the form was submitted before or if it's a fresh page load
+                            //     var hasDecodedMessage = document.getElementById('decodedMessageState').value;
+
+                            //     // Check if the form has been submitted or if it's a page refresh
+                            //     if (sessionStorage.getItem('formSubmitted') === 'true') {
+                            //         // Reset the form after submission if no decoded message exists
+                            //         if (hasDecodedMessage === "false") {
+                            //             document.getElementById('stegForm').reset();
+                            //             document.getElementById('decodedMessage').style.display = 'none';
+                            //             document.getElementById('uploadedImage').style.display = 'none';
+                            //         }
+                            //         sessionStorage.removeItem('formSubmitted'); // Reset the flag
+                            //     } else {
+                            //         // If it's a fresh page load or a refresh, reset the form and hide results
+                            //         document.getElementById('stegForm').reset();
+                            //         document.getElementById('decodedMessage').style.display = 'none';
+                            //         document.getElementById('uploadedImage').style.display = 'none';
+                            //     }
+                            // }
+
+                            // On form submit, store the flag that it was submitted
+                            // document.getElementById('stegForm').addEventListener('submit', function () {
+                            //     sessionStorage.setItem('formSubmitted', 'true');
+                            // });
+
+                        </script>
+                        <!-- [ Main Content ] end -->
+                        {% endblock %}

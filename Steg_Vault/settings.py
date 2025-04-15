@@ -76,11 +76,16 @@ WSGI_APPLICATION = 'Steg_Vault.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Steg_Vault',
+        'USER': 'postgres',
+        'PASSWORD': 'jayu1294*',
+        'HOST' : 'localhost',
+        'PORT' : '5432',
     }
 }
 
+SITE_URL = "http://127.0.0.1:8000"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -99,6 +104,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Store in DB
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_SAVE_EVERY_REQUEST = True
 
 
 # Internationalization
@@ -120,7 +129,19 @@ STATIC_URL = 'static/'
 STATIC_ROOT=BASE_DIR/'staticfiles'
 STATICFILES_DIRS=[BASE_DIR/"Steg_Vault/static"]
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email setup
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jayuj6028@gmail.com'
+EMAIL_HOST_PASSWORD = 'sszu bofn fmgl zmgt'

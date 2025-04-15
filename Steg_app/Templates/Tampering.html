@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- <head>
+    <link src="{% static 'css/steganography.css'}" rel="stylesheet">
+</head> -->
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <section class="text-center mb-5">
+                            <h2 class="h2 mb-4">
+                                Tampering Detection
+                            </h2>
+                            <hr style="border-color: white;">
+                            <p class="text-muted mb-4">
+                                Advanced Image Forensics
+                            </p>
+                            <p class="text-muted mb-4">
+                                Detect hidden manipulations and verify the integrity of your images with our
+                                cutting-edge analysis tool.
+                            </p>
+                            <hr style="border-color: white;">
+                            <img alt="A detailed illustration of image steganography process" class="img-fluid mb-4"
+                                height="400" src="{% static 'images/Tampering.jpg'%}" width="600"
+                                style="border-radius: 30px;" />
+
+                            <hr style="border-color: white;">
+                        </section>
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                How It Works
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 1: Upload your image" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Upload.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 1: Upload Image
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Upload the image you want to analyze for tampering. You can select it
+                                                from your computer.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 2: Select Analysis Method" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/hash.png'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 2: Hash Generation
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                A unique digital fingerprint (hash) of the uploaded image is generated.
+                                                This hash represents the original image's integrity.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 3: Perform Analysis" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/tamper.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 3: Tampering Analysis
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                The image is analyzed to detect any signs of tampering. This
+                                                involves comparing the current hash with the original hash of the
+                                                uploaded image
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 3: View Results" class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Download.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 4: View Results
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                The analysis results show tampering status, image version (original,
+                                                watermarked, or steganographed), and both current and original hashes.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12  mb-2">
+                                    <div class="card">
+                                        <img alt="Step 3: View Results" class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/log.jpeg'%}"
+                                            style="width: 150px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 5: Analyze Logs
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                View the analysis log below for a step-by-step breakdown of the process,
+                                                including the latest image uploads, hash generation, and tampering
+                                                detection results.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Tampering Detection Process</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <!-- upload section start -->
+                                        <form id="uploadForm" action="{% url 'Tamper' %}" method="POST"
+                                            enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class=" form-group">
+                                                <label for="imageUpload" class="form-label">Choose an image to
+                                                    upload:</label>
+                                                <input accept="image/*" type="file" class="form-control"
+                                                    id="imageUpload" name="image" required="">
+                                            </div>
+                                            <button class="btn btn-primary mt-2 mb-4" type="submit">
+                                                Upload & Analyse
+                                            </button>
+
+                                            <!-- upload section end -->
+                                            <!-- Analysis section start -->
+                                            <h4 class="font-weight-semibold mb-3">
+                                                Analysis
+                                            </h4>
+                                            <div class="row align-items-center">
+                                                <div class="col-md-6">
+                                                    <img src="{% if uploaded_image_url %}{{ uploaded_image_url }}{% else %}{% static 'images/tamper2.jpg' %}{% endif %}"
+                                                        alt="Placeholder image for analysis"
+                                                        class="img-fluid rounded shadow mb-3 mb-md-0"
+                                                        id="uploadedImage">
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <h3 class="h5 font-weight-semibold mb-3">
+                                                        Analysis Results
+                                                    </h3>
+                                                    <p class="text-muted mb-4" id="analysisStatus">
+                                                        The uploaded image is being analyzed for tampering. <br>
+                                                        Please wait for the results.
+                                                    </p>
+                                                    <p class="mb-3">
+                                                        <strong>
+                                                            Status:
+                                                        </strong>
+                                                        <span id="tamperingStatus">
+                                                            {{status}}
+                                                        </span>
+                                                    </p>
+                                                    <p class="mb-3">
+                                                        <strong>
+                                                            Original Hash:
+                                                        </strong>
+                                                        <span id="originalHash">
+                                                            {{original_hash}}
+                                                        </span>
+                                                    </p>
+                                                    <p class="mb-3">
+                                                        <strong>
+                                                            Current Hash:
+                                                        </strong>
+                                                        <span id="currentHash">
+                                                            {{current_hash}}
+                                                        </span>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                            <!-- Analysis section end -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Log data start -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Logs Data</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <!-- <div class="bg-white p-6 rounded-lg shadow-lg"> -->
+                                        <ul class="list-group" id="log-list">
+                                            {% for log in logs %}
+                                            <li class="list-group-item" style="background-color: #082032;">
+                                                <strong>Status:</strong> {{ log.status }} <br>
+                                                <strong>Detected At:</strong> {{ log.detected_at }} <br>
+                                            </li>
+                                            {% empty %}
+                                            <li class="list-group-item text-muted" id="no-logs">No tampering logs available.</li>
+                                            {% endfor %}
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- log data ends -->
+                        <!-- <script>
+                            document.addEventListener("DOMContentLoaded",function(){
+                                const logContainer = document.getElementById("log-list");
+                                const nologsMessage = document.getElementById("no-logs");
+
+                                function addlog(logText){
+                                    const logEntry = document.createElement("li");
+                                    logEntry.className = "list-group-item";
+                                    logEntry.style.background = "#082032";
+                                    logEntry.innerHtml = logText;
+                                    logContainer.appendChild(logEntry);
+                                }
+
+                                // Check if logs exist from django
+                                const logEntryText = "{{log|safe}}";
+                                if (logEntryText.trim() !== "[]"){
+                                    if(nologsMessage) nologsMessage.style.display = "none";   //Hide no logs message
+                                }
+                            });
+                        </script> -->
+
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                Features
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="High security feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/log.jpeg'%}"
+                                            style="width: 150px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Logging
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Detailed log of the entire analysis process, from upload to results.<br>
+                                                Timestamps for each log entry.<br>
+                                                Clear log messages indicating each step.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="User-friendly interface feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/file.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Help and Documentation
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Clear instructions on how to use the application.<br>
+                                                Explanation of the tampering detection process and the meaning of the
+                                                results.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Fast processing feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/ui.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Intuitive Interface
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Make the application easy to use, even for non-technical users.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Cross-platform compatibility feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Platform.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Cross-Platform
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Our application works seamlessly on all major platforms and devices.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- [ Main Content ] end -->
+
+                        <!-- Tampering js codes link -->
+                        <script src="{% static 'js/tamper.js'%}"></script>
+
+                        {% endblock %}

@@ -1,0 +1,100 @@
+.tab-content li {
+    line-height: 25px;
+  }
+
+  /* Flowchart container */
+  .flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Flowchart nodes */
+  .node {
+    background-color: #34495e;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    border: 2px solid white;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .node1 {
+    background-color: #34495e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 130px;
+    border: 2px solid white;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Hover effect */
+  .node .node1:hover {
+    background-color: #1abc9c;
+    transform: scale(1.05);
+  }
+
+  /* Special color for decision node */
+  .decision {
+    background-color: #f39c12;
+  }
+
+  /* Two options layout */
+  .options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    width: 270px;
+  }
+
+  /* Arrow styles */
+  .arrow {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: -15px;
+  }
+
+  /* Labels (Extra Explanations) */
+  .label {
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .merge-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+}
+
+.merge-arrow .arrow {
+    font-size: 30px;
+    color: white;
+    padding: 0 5px;
+    margin-left: 20px;
+}
+/* Default tab style */
+.nav-pills .nav-link1 {
+    color: white !important; 
+    background-color: transparent !important; /* Ensures non-active tabs don't retain color */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition */
+    border-radius: 10px;
+}
+
+/* Active tab style */
+.nav-pills .nav-link1.active {
+    background-color: #2C394B !important; /* Custom active tab color */
+    color: white !important;
+}

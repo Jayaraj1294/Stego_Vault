@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- <head>
+    
+</head> -->
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <section class="text-center mb-5">
+                            <h2 class="h2 mb-4">
+                                Image Steganography
+                            </h2>
+                            <hr style="border-color: white;">
+                            <p class="text-muted mb-4">
+                                Hide Your Messages in Images.
+                            </p>
+                            <p class="text-muted mb-4">
+                                Securely hide your secret messages within images using our advanced steganography tool.
+                            </p>
+                            <!-- <img alt="A detailed illustration of image steganography process" class="img-fluid mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/OjlwScxYtjV4vlfFxqwetsEUGhkLWj1pTO05Yx0ozVQ.jpg" width="600"/>
+                             -->
+                            <hr style="border-color: white;">
+                        </section>
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                How It Works
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 1: Upload your image" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Upload.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 1: Upload Image
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Choose the image in which you want to hide your message.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 2: Enter your secret message" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/File.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 2: Enter Message
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Type your secret message to hide in the image.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 3: Select Algorithm" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Algorithm.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 3: Algorithm
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Utilizes LSB algorithm that best suits your needs.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 3: Download the steganographed image"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Download.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 4: Download Image
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Download the image with the hidden message securely embedded.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Steganography Process</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <form action="{% url 'steg'%}" method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="image">
+                                                    Upload Image:
+                                                </label>
+                                                <input class="form-control" id="image" name="image" type="file"
+                                                    required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="secret_data">
+                                                    Enter Message:
+                                                </label>
+                                                <textarea class="form-control mb-3" id="secret_data"
+                                                    name="secret_message" placeholder="Enter your secret message here"
+                                                    rows="3" required></textarea>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="algorithmSelect">
+                                                    Algorithm:
+                                                </label>
+                                                <input class="form-control" id="encoding_method" name="encoding_method"
+                                                    value="LSB (Least Significant Bit)" readonly disabled>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <button class="btn btn-success" type="submit" id="steg-button" style="font-size: medium; font-weight: 800;">
+                                                    Perform Steganography
+                                                </button>
+                                                <a type="submit" href="{% url 'steganalysis'%}"
+                                                    class="btn btn-outline-primary"
+                                                    style="font-size: medium; font-weight: 800;">Steganalysis</a>
+                                            </div>
+                                        </form>
+                                        {% if download_url %}
+                                        <div id="encodedImage" class="mt-3">
+                                            <h4>Encoded Image</h4>
+                                            <img src="{{ download_url }}" alt="Encoded Image" class="img-fluid">
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- {% if messages %}
+                        <div class="row" id="messagecontainer">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <ul class="list-group" id="logsList">
+                                            {% for message in messages %}
+                                            <div class="alert alert-{{ message.tags }}">
+                                                {{ message }}
+                                            </div>
+                                            {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %} -->
+
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                Features
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="High security feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Security.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                High Security
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Our application uses advanced algorithms to ensure your messages are
+                                                securely hidden.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="User-friendly interface feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Friendly.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                User-Friendly
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                The interface is designed to be intuitive and easy to use for everyone.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Fast processing feature icon" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Processing.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Fast Processing
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Quickly hide and retrieve messages without any delay.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card">
+                                        <img alt="Cross-platform compatibility feature icon"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Platform.jpg'%}"
+                                            style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Cross-Platform
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Our application works seamlessly on all major platforms and devices.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <script>
+                            // Image timer code
+                            setTimeout(function () {
+                                let messagecontainer = document.getElementById('encodedImage');
+                                if (messagecontainer) {
+                                    messagecontainer.style.transition = "opacity 0.5s";
+                                    messagecontainer.style.opacity = "1" //fade out effect
+                                    setTimeout(() => messagecontainer.remove(), 700)  // Remove from DOM
+                                }
+                            }, 5000);
+
+                            // Message timer code
+                            setTimeout(function () {
+                                let messagecontainer = document.getElementById('messagecontainer');
+                                if (messagecontainer) {
+                                    messagecontainer.style.transition = "opacity 0.5s";
+                                    messagecontainer.style.opacity = "1" //fade out effect
+                                    setTimeout(() => messagecontainer.remove(), 300)  // Remove from DOM
+                                }
+                            }, 5000);
+                        </script>
+                        <!-- Auto download script -->
+                        {% if download_url %}
+                        <script>
+                            window.onload = function () {
+                                const link = document.createElement("a");
+                                link.href = "{{ download_url }}";
+                                link.download = "";
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                            };
+                        </script>
+                        {% endif %}
+                        <!-- [ Main Content ] end -->
+                        {% endblock %}

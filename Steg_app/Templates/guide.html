@@ -1,0 +1,469 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/guide.css'%}">
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+  <div class="pcoded-wrapper">
+    <div class="pcoded-content">
+      <div class="pcoded-inner-content">
+        <div class="main-body">
+          <div class="page-wrapper">
+            <!-- [ Main Content ] start -->
+            <div class="row">
+              <div class="col-sm-8">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active show" id="pills-guide-tab" data-toggle="pill" href="#pills-guide"
+                      role="tab" aria-controls="pills-guide" aria-selected="true">Guide</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-support-tab" data-toggle="pill" href="#pills-support" role="tab"
+                      aria-controls="pills-support" aria-selected="false">Support</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                  <!-- Guide Section -->
+                  <div class="tab-pane fade active show" id="pills-guide" role="tabpanel"
+                    aria-labelledby="pills-guide-tab">
+                    <div class="card-block">
+                      <h5>Application Guide</h5>
+                      <p>This guide provides a step-by-step overview of the features available in this application.</p>
+
+                      <!-- Navigation Tabs -->
+                      <ul class="nav nav-pills" style=" border-radius: 10px; background-color: #082032 ;" id="guide-tabs" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link1 active" id="account-tab" style="background-color: #2C394B; color: white;" data-toggle="tab" href="#account-guide" role="tab"
+                            aria-controls="account-guide" aria-selected="true">Account Management</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link1" id="encryption-tab" data-toggle="tab" href="#encryption-guide" role="tab"
+                            aria-controls="encryption-guide" aria-selected="false">Cryptography</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link1" id="steganography-tab" data-toggle="tab" href="#steganography-guide"
+                            role="tab" aria-controls="steganography-guide" aria-selected="false">Steganography</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link1" id="tamper-tab" data-toggle="tab" href="#tamper-guide" role="tab"
+                            aria-controls="tamper-guide" aria-selected="false">Tampering Detection</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link1" id="watermarking-tab" data-toggle="tab" href="#watermarking-guide"
+                            role="tab" aria-controls="watermarking-guide" aria-selected="false">Forensic
+                            Watermarking</a>
+                        </li>
+                      </ul>
+
+                      <!-- Tab Content -->
+                      <div class="tab-content mt-1" id="guide-tabContent">
+                        <!-- Account Management -->
+                        <div class="tab-pane fade show active" id="account-guide" role="tabpanel"
+                          aria-labelledby="account-tab">
+                          <h4>Account Management</h4>
+                          <p>The application ensures secure user authentication and account management through
+                            encryption and best security practices.</p>
+
+                          <ul>
+                            <li><b>Register:</b> Users create an account by providing a valid email and password.
+                              Passwords are securely hashed before storage.</li>
+                            <li><b>Login:</b> User authentication is performed using a hashed password comparison.</li>
+                            <li><b>Profile Management:</b> Users can update personal details while maintaining security
+                              measures.</li>
+
+                            <li><b>Password Reset:</b> Users can reset passwords through email verification.</li>
+                          </ul>
+
+                          <p><b>Algorithm Used:</b> Passwords are hashed using bcrypt for secure storage.</p>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>User registers by providing an email and password.</li>
+                            <li>Password is hashed before being stored in the database.</li>
+                            <li>Upon login, the entered password is hashed and compared with the stored hash.</li>
+
+                          </ol>
+                        </div>
+
+
+                        <!-- Encryption -->
+                        <div class="tab-pane fade" id="encryption-guide" role="tabpanel"
+                          aria-labelledby="encryption-tab">
+                          <h4 class="mb-3">Encryption (AES & RSA)</h4>
+                          <p>The encryption module secures sensitive text messages before embedding them into images
+                            using steganography.</p>
+                          <ol>
+                            <h5 class="mt-3 mb-2">
+                              <li>AES (Advanced Encryption Standard) Encryption</li>
+                            </h5>
+                            <ul>
+                              <li>Uses a randomly generated AES key (256-bit) to encrypt plaintext messages.</li>
+                              <li>AES operates in a block cipher mode to provide high security.</li>
+                              <li>The encrypted text can be safely stored or used in the steganography process.</li>
+                            </ul>
+                            <h5 class="mt-3 mb-2">
+                              <li>RSA Encryption for AES Key Protection</li>
+                            </h5>
+                            <ul>
+                              <li>The AES key itself is encrypted using RSA, ensuring only the authorized user can
+                                retrieve it..</li>
+                              <li>The RSA public key (2048-bit) is used to encrypt the AES key before storage, while the
+                                private key is required for decryption.</li>
+
+                            </ul>
+                          </ol>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>User enters a text message for encryption.</li>
+                            <li>The system generates an AES key and encrypts the message.</li>
+                            <li>The AES key is then encrypted using RSA.</li>
+                            <li>The encrypted text and AES key are stored securely.</li>
+                          </ol>
+
+                          <h4 class="mt-4 mb-3">Decryption (AES & RSA)</h4>
+                          <p>Decryption is responsible for retrieving and decrypting messages that were previously
+                            encrypted using AES and RSA encryption techniques. It ensures that only authorized users can
+                            access the original message by verifying the correct decryption keys before processing.</p>
+
+                          <h5 class="mt-3 mb-2">Key-Based Decryption</h5>
+                          <ul>
+                            <li>The correct RSA private key is required to decrypt the AES key.</li>
+                            <li>The decrypted AES key is then used to recover the original message.</li>
+
+                          </ul>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>The user can either manually provide the encrypted text for decryption or retrieve the
+                              ciphertext from the database using the corresponding title stored within the system.</li>
+                            <li>RSA decrypts the AES key.</li>
+                            <li>AES decrypts the message.</li>
+                            <li>The original message is displayed if authentication is successfull.</li>
+                          </ol>
+                        </div>
+
+                        <!-- Steganography -->
+                        <div class="tab-pane fade" id="steganography-guide" role="tabpanel"
+                          aria-labelledby="steganography-tab">
+                          <h4 class="mb-3">Steganography</h4>
+                          <p>Steganography enables the hiding of encrypted text within images, ensuring that sensitive
+                            information remains concealed within digital media without raising suspicion.</p>
+                          <h5 class="mt-3 mb-2">Least Significant Bit (LSB) Embedding:</h5>
+                          <ul>
+                            <li>The Least Significant Bit (LSB) algorithm is used to embed encrypted text within an
+                              image’s pixel values.</li>
+                            <li>Each pixel’s LSB is modified to store portions of the encrypted text, making the changes
+                              imperceptible to the human eye.</li>
+                            <li>The capacity of an image to store hidden data depends on its resolution and format,
+                              ensuring the embedded text does not distort the image quality.</li>
+                          </ul>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>User selects a watermarked image for embedding.</li>
+                            <li>The encrypted text is hidden within the image using LSB steganography techniques.</li>
+                            <li>A steganographed image is generated, ensuring it visually remains unchanged.</li>
+                            <li>The user downloads and stores the steganographed image, which now contains the hidden
+                              encrypted message.</li>
+                          </ol>
+                          <h4 class="mt-4 mb-3">Steganalysis</h4>
+                          <p>Steganalysis is used to detect the presence of hidden data within images, analyzing whether
+                            an image has been manipulated to contain concealed messages.</p>
+                          <h5 class="mt-3 mb-2">Detection Techniques</h5>
+                          <ol>
+                            <li><b>Statistical Analysis: </b> Evaluates pixel values to identify anomalies that may
+                              indicate hidden data.
+                            </li>
+                            <li><b>Histogram Deviation:</b> Examines irregularities in color distribution that may be
+                              caused by data embedding.</li>
+                            <li><b>Noise Detection:</b> Identifies unintended distortions or visual inconsistencies
+                              introduced by steganography.</li>
+
+                          </ol>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>User uploads an image for analysis.</li>
+                            <li>The system applies multiple detection algorithms to examine the image’s pixel
+                              distribution.</li>
+                            <li>If hidden data is found, the system extracts the data from the image.</li>
+                            <li>If no hidden data is detected, the image is deemed clean, ensuring no concealed messages
+                              are present.</li>
+                          </ol>
+                        </div>
+
+                        <!-- Tampering Detection -->
+                        <div class="tab-pane fade" id="tamper-guide" role="tabpanel" aria-labelledby="tamper-tab">
+                          <h4>Tampering Detection</h4>
+                          <p>Tampering detection ensures the integrity of an image by verifying whether it has been
+                            altered after embedding
+                            a message or watermark. This feature plays a crucial role in security applications, digital
+                            forensics, and
+                            copyright protection, helping to detect unauthorized modifications.</p>
+
+                          <h5>Key Features of Tampering Detection:</h5>
+                          <ol>
+                            <li><b>Hash-Based Integrity Verification:</b>
+                              The system calculates a unique SHA-256 hash for the original image when it is first
+                              uploaded.
+                              This hash acts as a digital fingerprint, allowing detection of even minor modifications.
+                            </li>
+                            <li><b>Real-Time Image Verification:</b>
+                              When an image is uploaded for verification, the system recalculates its hash and compares
+                              it with the
+                              stored hash to determine if any alterations have occurred.</li>
+                            <li><b>Tampering Alerts & Reports:</b>
+                              If a mismatch is detected, the system flags the image as <b>tampered</b> and alerts the
+                              user.
+                              </li>
+                            <li><b>Visual Tampering Analysis (Future Scope):</b>
+                              Advanced implementations may include image processing techniques or AI-based methods to
+                              detect and highlight
+                              altered regions.</li>
+                          </ol>
+
+                          <h5>Algorithm Used:</h5>
+                          <p><b>SHA-256 Hashing:</b> This cryptographic function generates a fixed-size hash value
+                            unique to each image.
+                            Even a minor pixel change results in a completely different hash, ensuring highly effective
+                            tampering detection.</p>
+
+                            <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>The user uploads an image.</li>
+                            <li>The system calculates its SHA-256 hash and securely stores it in the database.</li>
+                            <li>When an image is submitted for verification, the system recalculates its SHA-256 hash.
+                            </li>
+                            <li>The newly computed hash is compared with the previously stored hash.</li>
+                            <li>
+                              <b>Result:</b>
+                              <ul>
+                                <li>If the hashes match, the image is considered <b>authentic</b> and unmodified.</li>
+                                <li>If the hashes do not match, the system flags the image as <b>tampered</b> and alerts
+                                  the user.</li>
+                              </ul>
+                            </li>
+                          </ol>
+
+                          <h5>Use Cases of Tampering Detection:</h5>
+                          <ul>
+                            <li><b>Digital Forensics:</b> Detects unauthorized alterations in forensic image evidence.
+                            </li>
+                            <li><b>Cybersecurity & Data Protection:</b> Prevents unauthorized modifications to sensitive
+                              images.</li>
+                            <li><b>Watermark Integrity Verification:</b> Ensures embedded watermarks remain intact and
+                              unaltered.</li>
+                            <li><b>Image Authentication in Secure Applications:</b> Confirms the originality of
+                              documents, certificates, or ID images.</li>
+                          </ul>
+
+                          <h5><i class="far fa-star workflow-icon"></i>&ensp;Future Enhancements:</h5>
+                          <p>Additional improvements may include AI-powered tampering detection, heatmap visualization
+                            of altered areas,
+                            and blockchain-based verification for immutable record-keeping.</p>
+                        </div>
+
+
+                        <!-- Watermarking -->
+                        <div class="tab-pane fade" id="watermarking-guide" role="tabpanel"
+                          aria-labelledby="watermarking-tab">
+                          <h4>Watermarking</h4>
+                          <p>Watermarking is a crucial technique used to embed identifying information into an image,
+                            ensuring authenticity, copyright protection, and security. This feature allows users to add
+                            visible or invisible watermarks, protecting digital assets from unauthorized
+                            use and modification.</p>
+                          <h5 class="mt-3 mb-2">Key Features of Watermarking:</h5>
+                          <ul>
+                            <li><b>Dual Watermarking Options:</b> Users can embed either <b>text</b> or
+                              <b>image-based</b> watermarks.
+                            </li>
+                            <li><b>Secure Encryption for Watermarks:</b> AES and RSA encryption ensure that the embedded
+                              watermark
+                              (text or image) remains protected from unauthorized extraction.</li>
+                            <li><b>Custom Watermark Positioning:</b> The watermark placement can be selected based on
+                              user preference
+                              (e.g., top-left, top-right, center, bottom-left, bottom-right).</li>
+
+                            <li><b>Resistant to Basic Edits:</b> Watermarks remain embedded even after minor
+                              modifications like cropping,
+                              resizing, or compression.</li>
+                          </ul>
+                          <h5 class="mt-3 mb-2">Algorithm Used:</h5>
+                          <p>The system utilizes <b>LSB (Least Significant Bit) Steganography</b> for embedding
+                            watermarks, ensuring that
+                            the watermark is securely hidden while preserving image quality.</p>
+
+                          <h5 class="mt-3 mb-2">Encryption Mechanism for Watermarking:</h5>
+                          <p>The watermark embedding process is secured using a combination of:</p>
+                          <ul>
+                            <li><b>AES (Advanced Encryption Standard):</b> Used to encrypt the watermark (text or image)
+                              before embedding.</li>
+                            <li><b>RSA (Rivest-Shamir-Adleman):</b> Used to encrypt the AES key, ensuring that only
+                              authorized users
+                              with the private key can decrypt and extract the watermark.</li>
+                          </ul>
+                          <p>This encryption mechanism prevents unauthorized extraction of the watermark, as decryption
+                            is only possible
+                            with the correct key.</p>
+
+                            <h5 class="mt-3 mb-2"><i class="far fa-clipboard workflow-icon"></i>&ensp;Workflow:</h5>
+                          <ol>
+                            <li>The user selects an image to watermark.</li>
+                            <li>The user chooses either text or an image as the watermark.</li>
+                            <li>The AES key used for encryption is then encrypted with RSA and securely stored.</li>
+                            <li>The system applies the watermark to the image while preserving its quality.</li>
+                            <li>The watermarked image is generated and available for download.</li>
+                          </ol>
+
+                          <h5 class="mt-3 mb-2"><i class="far fa-star workflow-icon"></i>&ensp;Future Enhancements:</h5>
+                          <p>Potential improvements include:
+                          <ul>
+                            <li><b>AI-Powered Invisible Watermarking:</b> Implementing advanced techniques to hide
+                              watermarks in
+                              complex patterns, making detection harder.</li>
+                            <li><b>Blockchain-Based Verification:</b> Storing watermark verification data on the
+                              blockchain for
+                              immutable proof of ownership.</li>
+                            <li><b>Robust Watermarking Techniques:</b> Developing resistance against advanced image
+                              processing attacks,
+                              including filtering and geometric transformations.</li>
+                          </ul>
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- Support Section -->
+                  <div class="tab-pane fade" id="pills-support" role="tabpanel" aria-labelledby="pills-support-tab">
+                    <div class="card-block">
+                      <h4 class="mb-3">Support</h5>
+                        <p>If you need further assistance, reach out to our support team.</p>
+                        <form action="{% url 'Support' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                          {% csrf_token %}
+                          <div class="row gy-4">
+                            {% if request.session.userid %}
+                            <div class="col-md-6 mb-3">
+                              <label for="name-field" class="pb-2">Username</label>
+                              <input type="text" name="name" id="name-field" class="form-control"
+                              value="{{user.username}}" readonly>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label for="email-field" class="pb-2">Email</label>
+                              <input type="email" class="form-control" name="email" id="email-field"
+                                value="{{user.email}}" readonly>
+                            </div>
+                            {% endif %}
+                            <div class="col-md-12 mb-3">
+                              <label for="subject-field" class="pb-2">Subject</label>
+                              <input type="text" class="form-control" name="subject" id="subject-field"
+                                placeholder="Enter subject" required="">
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                              <label for="message-field" class="pb-2">Message</label>
+                              <textarea class="form-control" name="message" rows="10" id="message-field"
+                                placeholder="Enter your message....." required=""></textarea>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                              <!-- <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div> -->
+
+                              <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-block">
+                    <h5 class="mb-4">Application Workflow</h5>
+                    <hr style="border-color: white;">
+                    <div class="flowchart">
+                      <div class="node">User Login</div>
+                      <div class="label">Access Dashboard</div>
+                      <div class="arrow">↓</div>
+
+                      <div class="node">Watermarking</div>
+                      <div class="label">Apply Image/Text Watermark</div>
+                      <div class="arrow">↓</div>
+
+                      <div class="node">Encryption</div>
+                      <div class="label">Encrypt Data & Copy Ciphertext</div>
+                      <div class="arrow">↓</div>
+
+                      <div class="node">Steganography</div>
+                      <div class="label">Encode Image with Data & Download Steganographed Image</div>
+
+                      <div class="arrow">↓</div>
+
+                      <div class="node">Tampering Detection</div>
+                      <div class="arrow">↓</div>
+                      <div class="node decision">Has the image been modified?</div>
+
+                      <!-- Decision Branch -->
+                      <div class="options">
+                        <div style="text-align: center;">
+                          <div class="arrow">↓</div>
+                          <div class="node1">Tampered!</div>
+                          <div class="label">Alert the user</div>
+                        </div>
+                        <div style="text-align: center;">
+                          <div class="arrow">↓</div>
+                          <div class="node1">Verified</div>
+                          <div class="label">Proceed securely</div>
+                        </div>
+                      </div>
+
+                      <!-- Merge Arrow -->
+                      <div class="merge-arrow">
+                        
+                        <span class="merge-line"></span>
+                        <span class="arrow">↙</span>
+                      </div>
+
+                      <!-- Continuing the flow after "Verified" -->
+                      <div class="arrow">↓</div>
+                      <div class="node">Steganalysis</div>
+                      <div class="label">Extract Hidden Data</div>
+
+                      <div class="arrow">↓</div>
+                      <div class="node">Decryption</div>
+                      <div class="label">Decrypt Data & Retrieve original message</div>
+
+                      <div class="arrow">↓</div>
+                      <div class="node">Process Completed</div>
+
+
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- [ Main Content ] end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import mermaid from "https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  {% endblock %}

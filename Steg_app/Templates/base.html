@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Stego Vault
+    </title>
+
+    <meta name="google-site-verification" content="kCT200-J0rfczENRkJQdYCqsDKkUo3Hvr3KZic_otwU" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'images/Steg2.png'%}" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet"
+        href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/css/style.css">
+    <!-- dark mode css -->
+    <link rel="stylesheet" href="{% static 'css/dark.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css'%}">
+    
+</head>
+
+<body>
+
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="{% url 'dash'%}" class="b-brand">
+                    <div class="b-bg img1">
+                        <i><img src="{%static 'images/Steg2.png'%}" class="img12"></i>
+                    </div>
+                    <span class="b-title">Stego Vault</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="welcome-msg">
+                        {{user.username}}
+                    </li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li data-username="dashboard" class="nav-item">
+                        <a href="{%url 'dash'%}" class="nav-link"><span class="pcoded-micon"><i
+                                    class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                    </li>
+                    <li data-username="Profile" class="nav-item ">
+                        <a href="{% url 'profile' %}" class="nav-link">
+                            <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                            <span class="pcoded-mtext">Profile</span></a>
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Services</label>
+                    </li>
+                    <li data-username="Table bootstrap datatable footable" class="nav-item">
+                        <a href="{% url 'Watermark'%}" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-shield"></i></span><span class="pcoded-mtext">Forensic
+                                Watermarking</span></a>
+                    </li>
+                    <li data-username="Table bootstrap datatable footable" class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-lock"></i></span><span
+                                class="pcoded-mtext">Cryptography</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{% url 'Encrypt'%}" class="">Encryption</a></li>
+                            <li class=""><a href="{% url 'Decrypt'%}" class="">Decryption</a></li>
+                        </ul>
+                    </li>
+                    <li data-username="form elements advance componant validation masking wizard picker select"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-eye-off"></i></span><span
+                                class="pcoded-mtext">Steganography</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{% url 'steg'%}" class="">Image Steganography</a></li>
+                            <li class=""><a href="{% url 'steganalysis'%}" class="">Steganalysis</a></li>
+                        </ul>
+                    </li>
+
+                    <li data-username="Table bootstrap datatable footable" class="nav-item">
+                        <a href="{% url 'Tamper'%}" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-search"></i></span><span class="pcoded-mtext">Forgery
+                                Detection</span></a>
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>More Resources</label>
+                    </li>
+
+                    <li data-username="Support Page" class="nav-item ">
+                        <a target="_blank" href="{%url 'Guide'%}" class="nav-link">
+                            <span class="pcoded-micon">
+                                <i class="feather icon-file-text"></i>
+                            </span>
+                            <span class="pcoded-mtext">Guide</span>
+                        </a>
+                    </li>
+                    <li data-username="Disabled Menu" class="nav-item">
+                        <a href="{%url 'logout_view'%}" class="nav-link">
+                            <span class="pcoded-micon"><i class="feather icon-power"></i></span><span
+                                class="pcoded-mtext">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href=""><span></span></a>
+            <a href="{%url 'dash'%}" class="b-brand">
+                <div class="b-bg img1">
+                    <i><img src="{%static 'images/Steg2.png'%}" class="img12"></i>
+                </div>
+                <span class="b-title">Stego Vault</span>
+            </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="javascript:">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i
+                            class="feather icon-maximize"></i></a></li>
+
+                
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <!-- Theme code start -->
+                <li>
+                    <label>
+                        <i class="icon feather icon-sun" id="theme-indicator"></i>
+                        <input type="checkbox" id="theme-switch" class="d-none">
+                    </label>
+                </li>
+                <!-- Theme code end -->
+
+                <!-- Notification Bar code start -->
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown"><i
+                                class="icon feather icon-bell"></i>
+
+                                {% if notifications.count %}
+                                <span class="badge badge-danger" id="notificationCount">
+                                    {{ notifications.count }}
+                                </span>
+                            {% endif %}                            
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right notification " 
+                            style="border: 2px solid #082032; border-radius: 10px; max-height: 400px; width: 380px;">
+                            <div class="noti-head" style="background-color: #082032; position: sticky; top: 0; z-index: 1;">
+                            
+                                <h6 class="d-inline-block m-b-0">Notifications</h6>
+                            </div>
+                            {% if notifications %}
+                            <!-- Scrollable Body -->
+                            <div class="noti-body" style="max-height: 300px; overflow-y: auto;">
+                                <ul class="list-unstyled m-0 p-2">
+                                    {% if notifications %}
+                                        {% for notification in notifications %}
+                                            {% if not notification.is_read %}
+                                                <li class="notification border-bottom p-2">
+                                                    <div class="media d-flex align-items-center">
+                                                        <i class="icon feather icon-message-square m-r-10" style="font-size: 20px;"></i>
+                                                        <div class="media-body">
+                                                            <p class="fw-bold fs-6 mb-1">{{ notification.message }}</p>
+                                                            <p class="small text-muted">{{ notification.timestamp }}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="text-center p-3">
+                                            <p>No new notifications</p>
+                                        </div>
+                                    {% endif %}
+                                </ul>
+                                
+                            </div>
+                            {% endif %}
+                            <div class="noti-footer" style="background-color: #082032; position: sticky; bottom: 0;">
+                                <a href="{% url 'mark_all_as_read' %}" id="markAllRead">Mark all as read</a>
+                             
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#markAllRead").click(function(event) {
+                                        event.preventDefault();  // Prevent page reload
+                            
+                                        let csrftoken = $("input[name=csrfmiddlewaretoken]").val();  // Fetch CSRF Token
+                            
+                                        $.ajax({
+                                            url: "{% url 'mark_all_as_read' %}",
+                                            type: "POST",
+                                            headers: { "X-CSRFToken": csrftoken },  // Include CSRF token
+                                            success: function(response) {
+                                                if (response.success) {
+                                                    // Clear UI in real-time
+                                                    $(".noti-body").html('<div class="text-center p-3"><p>No new notifications</p></div>');
+                            
+                                                    // Hide badge if no unread messages
+                                                    if (response.unread_count === 0) {
+                                                        $("#notificationCount").hide();
+                                                    } else {
+                                                        $("#notificationCount").text(response.unread_count).show();
+                                                    }
+                                                }
+                                            },
+                                            error: function(xhr) {
+                                                console.error("Error:", xhr);
+                                            }
+                                        });
+                                    });
+                                });
+                               
+
+                            </script>
+                                                      
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="{{ user.profile_picture.url }}"
+                                    class="img-radius" style="width: 50px; height: 50px;" alt="User-Profile-Image">
+                                <span>
+                                    {{user.username}}
+                                </span>
+                                <a href="{% url 'logout_view'%}" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="{% url 'profile'%}" class="dropdown-item"><i class="feather icon-user"></i>
+                                        Profile</a></li>
+                                <li><a href="{% url 'logout_view'%}" class="dropdown-item">
+                                        <i class="feather icon-lock"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- Message section start -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} fw-bold text-dark pop-up"
+        id="message-container" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <span class="text-success">{{ message }}&nbsp;</span>
+            <button type="button" class="btn btn-danger btn-sm ms-2" onclick="closeMessageModal()">X</button>
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <!-- JavaScript to Auto-Close on Click & Auto-Hide -->
+    <script>
+        function closeMessageModal() {
+            document.getElementById("message-container").style.display = "none";
+        }
+
+        // Auto-hide after 5 seconds
+        setTimeout(closeMessageModal, 8000);
+    </script>
+
+
+    {% endif %}
+    <!-- Message section end -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- <footer class="pcoded-footer">
+        <p>&copy; 2025 Stego Vault. All Rights Reserved.</p>
+    </footer> -->
+    <script src="{% static 'js/vendor-all.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/pcoded.min.js'%}"></script>
+    <script src="{% static 'js/dark-mode.js'%}"></script>
+
+
+    <!-- Specific Page JS goes HERE  -->
+
+</body>
+
+</html>

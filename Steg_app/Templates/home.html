@@ -1,0 +1,514 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Stego Vault</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+              Stego Vault is an advanced cybersecurity solution that integrates cryptography, steganography, and
+              watermarking
+              to protect sensitive data from unauthorized access and tampering. Our platform ensures <br>the
+              confidentiality, integrity, and authenticity
+              of digital assets.
+            </p>
+            <ul class="custom-list">
+              <li><i class="bi bi-check2-circle"></i> <span><strong>Secure Encryption:</strong> Encrypt messages using
+                  AES and RSA<br> for robust data protection.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span><strong>Steganography:</strong> Hide encrypted messages
+                  within images<br> without altering their visual integrity.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span><strong>Tamper Detection:</strong> Verify image integrity
+                  using SHA-256 <br>hash-based verification.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span><strong>Watermarking:</strong> Embed watermarks in images to
+                  ensure <br>digital ownership and traceability.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span><strong>Key-Based Access Control:</strong> Ensure only
+                  authorized users<br> can extract hidden data using unique cryptographic keys.</span></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <p>
+              In an era of growing cybersecurity threats, Stego Vault provides a comprehensive solution for securing
+              digital communication and intellectual property. Whether for personal privacy, corporate security, or
+              forensic analysis, our tool ensures that your data remains safe from unauthorized interception or
+              tampering.
+            </p>
+            <p>
+              Built with modern security standards, our application is designed for cybersecurity professionals,
+              researchers, and organizations that require high-level data protection. Explore how Stego Vault can
+              enhance your digital security strategy.
+            </p>
+            
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /About Section -->
+
+
+    <!-- Why Us Section -->
+
+    <section id="why-us" class="section why-us light-background" data-builder="section">
+      <div class="container-fluid">
+        <div class="row gy-4">
+          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
+              <h3><span>Why Choose </span><strong>Our Secure Data Protection Platform?</strong></h3>
+              <p>
+                We provide an all-in-one solution for data security, combining encryption, steganography, tamper
+                detection,
+                and forensic watermarking. Our platform ensures confidentiality, authenticity, and ownership protection,
+                making it ideal for safeguarding sensitive digital content.
+              </p>
+            </div>
+
+            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="faq-item faq-active">
+                <h3 class="faq-question"><span>01</span> Why use encryption in our application?
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </h3>
+                <div class="faq-content">
+                  <p>We implement AES and RSA encryption to protect sensitive information. Encrypted messages remain
+                    secure,
+                    ensuring that only authorized users with the correct decryption key can access the data.</p>
+                </div>
+              </div><!-- End Faq item -->
+
+              <div class="faq-item">
+                <h3 class="faq-question"><span>02</span> How does steganography enhance security?
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </h3>
+                <div class="faq-content">
+                  <p>Unlike traditional encryption, steganography conceals encrypted text inside images, making it
+                    undetectable
+                    to attackers. This ensures safe and covert communication without raising suspicion.</p>
+                </div>
+              </div><!-- End Faq item -->
+
+              <div class="faq-item">
+                <h3 class="faq-question"><span>03</span> What makes our solution stand out?
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </h3>
+                <div class="faq-content">
+                  <p>We integrate encryption, steganography, forensic watermarking, and tamper detection into a single
+                    system,
+                    ensuring secure data storage and transmission. With a simple yet effective approach, our platform
+                    makes
+                    security accessible to everyone.</p>
+                </div>
+              </div><!-- End Faq item -->
+
+              <div class="faq-item">
+                <h3 class="faq-question"><span>04</span> How does tamper detection work?
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </h3>
+                <div class="faq-content">
+                  <p>We use SHA-256 hash-based verification to detect unauthorized modifications to images or data. If
+                    tampering
+                    is detected, the system alerts the user, ensuring the integrity of stored and transmitted files.</p>
+                </div>
+              </div><!-- End Faq item -->
+
+              <div class="faq-item">
+                <h3 class="faq-question"><span>05</span> What is forensic watermarking, and why is it important?
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </h3>
+                <div class="faq-content">
+                  <p>Our forensic watermarking feature embeds text or image-based watermarks into files, allowing users
+                    to claim
+                    ownership and track unauthorized distribution. This protects against intellectual property theft and
+                    ensures
+                    content authenticity.</p>
+                </div>
+              </div><!-- End Faq item -->
+
+            </div>
+          </div>
+
+          <div class="col-lg-5 order-1 order-lg-2 why-us-img">
+            <img src="{% static 'images/hero-img1.png' %}" class="img-fluid animated" alt="Why Choose Us"
+              data-aos="zoom-in" data-aos-delay="100">
+          </div>
+        </div>
+      </div>
+    </section><!-- /Why Us Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Our application integrates cutting-edge techniques to ensure secure data concealment, encryption,
+          authentication, and integrity verification.
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-lock icon"></i></div>
+              <h4><a class="stretched-link">Data Encryption</a></h4>
+              <p>Secure your sensitive data with Hybrid (AES & RSA) encryption, ensuring confidentiality and protection
+                from unauthorized access.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-unlock icon"></i></div>
+              <h4><a class="stretched-link">Data Decryption</a></h4>
+              <p>Retrieve encrypted data securely using Hybrid (AES & RSA) decryption, ensuring authorized access and
+                data restoration.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-image icon"></i></div>
+              <h4><a class="stretched-link">Image Steganography</a></h4>
+              <p>Embed encrypted messages into images discreetly without altering their visual appearance, enhancing
+                privacy.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-search icon"></i></div>
+              <h4><a class="stretched-link">Steganalysis</a></h4>
+              <p>Analyze and detect hidden messages within images, identifying possible steganographic content and
+                ensuring security.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-fingerprint icon"></i></div>
+              <h4><a class="stretched-link">Tamper Detection</a></h4>
+              <p>Verify the integrity of images using SHA-256 hash-based authentication to detect unauthorized
+                modifications.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-water icon"></i></div>
+              <h4><a class="stretched-link">Watermarking</a></h4>
+              <p>Protect your digital assets with encrypted text and logo watermarking for ownership verification.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="700">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-key icon"></i></div>
+              <h4><a class="stretched-link">Key Management</a></h4>
+              <p>Automatically handle encryption keys, ensuring secure storage and retrieval for seamless encryption
+                workflows.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="800">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-file-lock icon"></i></div>
+              <h4><a class="stretched-link">File Integrity Monitoring</a></h4>
+              <p>Detect unauthorized file changes and maintain security logs to ensure your data remains unaltered and
+                trustworthy.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section dark-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <p>We offer cutting-edge security solutions, including Steganography, Cryptography, Watermarking, and Tampering
+          Detection, ensuring advanced data protection and privacy.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-image icon"></i></div>
+              <h4><a href="{% url 'log' %}" class="stretched-link">Steganography</a></h4>
+              <p>Hide sensitive information within images using advanced steganographic techniques, ensuring secure and
+                undetectable data concealment.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-lock icon"></i></div>
+              <h4><a href="{% url 'log' %}" class="stretched-link">Cryptography</a></h4>
+              <p>Encrypt sensitive text messages with AES and RSA encryption, providing robust security for confidential
+                communication.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-brush icon"></i></div>
+              <h4><a href="{% url 'log' %}" class="stretched-link">Watermarking</a></h4>
+              <p>Embed text or image watermarks to protect digital assets, with support for encrypted watermarking and
+                controlled extraction.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-shield-check icon"></i></div>
+              <h4><a href="{% url 'log' %}" class="stretched-link">Tampering Detection</a></h4>
+              <p>Verify data integrity using SHA-256 hashing to detect unauthorized modifications and maintain content
+                authenticity.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+      </div>
+
+    </section><!-- /Services Section -->
+
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      <img src="{% static 'images/back.jpg' %}" alt="">
+
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-9 text-center text-xl-start">
+            <h3>Secure Your Data with Stego Vault</h3>
+            <p>Protect your sensitive information with advanced encryption, steganography, and watermarking. Ensure
+              data integrity and prevent unauthorized access with our state-of-the-art security mechanisms.</p>
+          </div>
+          <div class="col-xl-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{% url 'log' %}">Get Started</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Faq 2 Section -->
+    <section id="faq" class="faq-2 section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to the most common questions about Stego Vault, including its security features,
+          encryption methods, and watermarking capabilities.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-10">
+
+            <div class="faq-container">
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>What is the overall approach for securing data using Stego Vault?</h3>
+                <div class="faq-content">
+                  <p>Stego Vault follows a multi-layered security approach to ensure data confidentiality, authenticity,
+                    and integrity. The process consists of the following sequential steps:<br><br>
+                    <strong>Step 1: Watermarking</strong><br>
+                    The user embeds a watermark (text or image) onto the original image. This ensures authorship
+                    protection and prevents unauthorized modifications.<br><br>
+
+                    <strong>Step 2: Encryption</strong><br>
+                    The sensitive data is encrypted using Hybrid (AES & RSA) encryption, securing it before embedding it
+                    into an
+                    image.<br><br>
+
+                    <strong>Step 3: Steganography</strong><br>
+                    The encrypted data is embedded into the watermarked image using the Least Significant Bit (LSB)
+                    technique, ensuring covert storage.<br><br>
+
+                    <strong>Step 4: Tamper Detection</strong><br>
+                    SHA-256 hash-based tampering detection verifies the integrity of the image, ensuring any
+                    unauthorized modifications are identified.<br><br>
+
+                    The embedded watermark cannot be fully extracted, adding an extra layer of security. Only the
+                    original author retains access to the unwatermarked version, preventing unauthorized removal or
+                    reversal of the watermarking process.
+                  </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>What encryption algorithms are used in Stego Vault?</h3>
+                <div class="faq-content">
+                  <p>The application implements AES (Advanced Encryption Standard) for symmetric encryption and RSA for
+                    asymmetric encryption. AES is used to encrypt text messages, while RSA encrypts the AES key for
+                    added security.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>How does the steganography feature work?</h3>
+                <div class="faq-content">
+                  <p>Stego Vault uses the Least Significant Bit (LSB) technique for steganography. This
+                    method hides encrypted messages or watermark data within the image by modifying the least
+                    significant bits of pixel values. The changes are imperceptible to the human eye, ensuring secure
+                    and undetectable data embedding.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Can the watermark be removed or extracted?</h3>
+                <div class="faq-content">
+                  <p>No, once the watermark is embedded, it cannot be fully extracted. This ensures that the original
+                    image remains secure, as only the author retains access to the unwatermarked version. This provides
+                    an additional layer of security by preventing unauthorized users from reversing the watermarking
+                    process. <br>
+                    Furthermore, the watermark is embedded using AES and RSA encryption, ensuring that it cannot be
+                    extracted without the corresponding decryption key. This dual-layer security mechanism enhances data
+                    protection, making unauthorized access or modification significantly more difficult.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>What types of watermarking are supported?</h3>
+                <div class="faq-content">
+                  <p>The application allows users to embed both text and image-based watermarks. Users can also choose
+                    the location of the watermark, providing flexibility for secure embedding.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>How does tampering detection work?</h3>
+                <div class="faq-content">
+                  <p>The tampering detection feature uses SHA-256 hashing to verify image integrity. When an image is
+                    uploaded, its hash is compared with the stored hash value to detect any unauthorized modifications.
+                  </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Faq 2 Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Have a question or need assistance with cybersecurity, encryption, or steganography? Reach out to us!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-5">
+
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Our Location</h3>
+                  <p>Skyline Appartments</p>
+                  <p>Thiruvalla, Kerala</p>
+                  <p>India</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <a href="tel:+917510977535" class="fs-6 text-white fw-light"><i class="bi bi-telephone flex-shrink-0"></i></a>
+                <div>
+                  <h3>Call Us</h3>
+                  <p>+91 7510977535</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <a href="mailto:jayuj6028@gmail.com"
+                class="fs-6 fw-light text-lowercase text-white"><i class="bi bi-envelope flex-shrink-0"></i></a>
+                <div>
+                  <h3>Email Us</h3>
+                  <p>jayuj6028@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+
+            </div>
+          </div>
+
+          <div class="col-lg-7" >
+            <form action="{% url 'contact' %}" method="POST" class="info-wrap">
+              {% csrf_token %}
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2">Your Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <button type="submit" class="btn btn-info text-white fw-bold" style="border-radius: 20px;">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+
+  {% endblock %}

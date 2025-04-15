@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,41 +7,43 @@
         Stego-Vault | Login
     </title>
 
-    <link rel="canonical" href="https://appseed.us/product/datta-able/django/">
     <meta name="google-site-verification" content="kCT200-J0rfczENRkJQdYCqsDKkUo3Hvr3KZic_otwU" />
 
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-    <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template"/>
-    <meta name="author" content="CodedThemes"/>
+    <meta name="description"
+        content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
+    <meta name="author" content="CodedThemes" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/Steg2.png'%}" type="image/x-icon">
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css'%}">
     <!-- animation css -->
-    <link rel="stylesheet" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/plugins/animation/css/animate.min.css">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
     <!-- vendor css -->
     <link rel="stylesheet" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/css/style.css">
     <!-- dark mode css -->
-    <link rel="stylesheet" href="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/css/dark.css">
+    <link rel="stylesheet" href="{% static 'css/dark.css'%}">
 
     <!-- Specific CSS goes HERE -->
-    
+
 
 </head>
+
 <body>
-    
-       
+
+    <!-- Transparent Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top mt-3">
+        <div class="container">
+            <a class="navbar-brand ml-auto text-white bg-info" style="border-radius: 10px; padding: 10px; font-size: 18px;" href="{% url 'home' %}">Home</a>
+        </div>
+    </nav>
+    <!-- Transparent Navbar End -->
 
     <div class="auth-wrapper">
         <div class="auth-content">
@@ -50,35 +53,57 @@
                 <span class="r s"></span>
                 <span class="r"></span>
             </div>
-            <form action="{%url 'dash'%}">
-            <div class="card">
-                <div class="card-body text-center">
-                    <div class="mb-4">
-                        <i class="feather icon-unlock auth-icon"></i>
-                    </div>
-                    <h3 class="mb-4">Login</h3>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="input-group mb-4">
-                        <input type="password" class="form-control" placeholder="password" required>
-                    </div>
-                    <div class="form-group text-left">
-                        <div class="checkbox checkbox-fill d-inline">
-                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                            <label for="checkbox-fill-a1" class="cr"> Save Details</label>
+            <form action="{%url 'log'%}" method="POST">
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <i class="feather icon-unlock auth-icon"></i>
                         </div>
+                        <h3 class="mb-4">Login</h3>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group mb-4">
+                            <input type="password" class="form-control" name="password" placeholder="password" required>
+                        </div>
+                        
+                        <button class="btn btn-primary shadow-2 mb-4">Login</button>
+                        <p class="mb-2 text-muted">Forgot password? <a href="{% url 'forgot'%}">Reset</a></p>
+                        <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'reg'%}">Sign UP</a></p>
                     </div>
-                    <button class="btn btn-primary shadow-2 mb-4">Login</button>
-                    <p class="mb-2 text-muted">Forgot password? <a href="/auth-reset-password.html">Reset</a></p>
-                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'reg'%}">Sign UP</a></p>
                 </div>
-            </div>
             </form>
         </div>
     </div>
+    <!-- Message section start -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} fw-bold text-dark pop-up"
+        id="message-container" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <span class="text-success">{{ message }}&nbsp;</span>
+            <button type="button" class="btn btn-danger btn-sm ms-2" onclick="closeMessageModal()">X</button>
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <!-- JavaScript to Auto-Close on Click & Auto-Hide -->
+    <script>
+        function closeMessageModal() {
+            document.getElementById("message-container").style.display = "none";
+        }
+
+        // Auto-hide after 5 seconds
+        setTimeout(closeMessageModal, 8000);
+    </script>
 
 
+    {% endif %}
+    <!-- Message section end -->
 
     <!-- Enable the dark mode -->
     <label class="d-none">
@@ -86,14 +111,15 @@
         <input type="checkbox" id="theme-switch" class="d-none">
     </label>
 
-    <script src="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/js/vendor-all.min.js"></script>
-<script src="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/js/pcoded.min.js"></script>
-<script src="https://appsrv1-147a1.kxcdn.com/data-able-v100-enh1/js/dark-mode.js"></script>
+    <script src="{% static 'js/vendor-all.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/pcoded.min.js'%}"></script>
+    <script src="{% static 'js/dark-mode.js'%}"></script>
 
 
     <!-- Specific Page JS goes HERE  -->
-        
+
 
 </body>
+
 </html>

@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <section class="text-center mb-5">
+                            <h2 class="h2 mb-4">
+                                Forensic Watermarking
+                            </h2>
+                            <hr style="border-color: white;">
+                            <p class="text-muted mb-4">
+                                Advanced Image Forensics
+                            </p>
+                            <p class="text-muted mb-4">
+                                Secure your images with our robust forensic watermarking technology by
+                                ensuring content integrity.
+                            </p>
+                            <hr style="border-color: white;">
+                            <img alt="A detailed illustration of image steganography process" class="img-fluid mb-4"
+                                height="400" src="{% static 'images/watermark.webp'%}" width="450"
+                                style="border-radius: 30px;" />
+
+                            <hr style="border-color: white;">
+                        </section>
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                How It Works
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 1: Upload your image" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/Upload.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 1: Upload Your Image
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Select an image you want to watermark.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 2: Choose Watermark Type" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/water2.png'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 2: Choose Watermark Type
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Provide the text or image that you wish to embed as a watermark.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 3: Adjust Settings" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/settings.jpeg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 3: Adjust Settings
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Choose the desired placement for the watermark, such as top-left,
+                                                top-right, bottom-left, or bottom-right.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 3: Embed Watermark" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/apply.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 4: Embed Watermark
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Apply the watermark securely using robust Forensic Techniques and Hybrid Cryptography.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Embed Watermark</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        
+                                            <!-- Embed Watermark Tab -->
+                                                <form action="{% url 'Watermark'%}" method="POST" id="watermarkForm"
+                                                    enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="image">Upload Image</label>
+                                                        <input type="file" class="form-control" name="image"
+                                                            accept="image/*" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="logo">Upload Watermark Logo:
+                                                        </label>
+                                                        <input type="file" class="form-control" name="logo"
+                                                            accept="image/*">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="watermark_text">Enter Watermark
+                                                            Text
+                                                            (Optional):
+                                                        </label>
+                                                        <input type="text" class="form-control" name="watermark_text"
+                                                            placeholder="Enter watermark text.....">
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="form-label">Select Position:</label>
+                                                        <select class="form-control" name="watermark_position">
+                                                            <option value="top-left">Top Left</option>
+                                                            <option value="top-right">Top Right</option>
+                                                            <option value="bottom-left">Bottom Left</option>
+                                                            <option value="bottom-right" selected>Bottom Right</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <button type="submit" class="btn btn-success"
+                                                            style="font-size: medium; font-weight: 800;">Apply
+                                                            Watermark</button>
+                                                    </div>
+                                                </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% if preview_url %}
+                <div class="row mt-4" id="previewContainer">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Embedded Watermark</h5>
+                            </div>
+                            <div class="card-block">
+                                <img id="previewImage" src="{{ preview_url }}" alt="{{ header_text }}" width="535">
+                            </div>
+                            <div class="card-block">
+                                {% if show_download %}
+                                <a href="{% url 'download_watermarked' images.last.id %}" >
+                                    <button type="submit" class="btn btn-secondary" id="downloadButton">
+                                        Download
+                                    </button>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- {% if preview_url %}
+                <h3>Extracted Watermark Preview</h3>
+                <img src="{{ preview_url }}" alt="Extracted Watermark"
+                    style="max-width: 100%; height: auto; border: 2px solid #ddd; padding: 5px;" />
+
+                <br><br>
+                <a href="{{ preview_url }}" download="Extracted_Watermark.png">
+                    <button
+                        style="padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer;">
+                        Download Extracted Watermark
+                    </button>
+                </a>
+                {% endif %} -->
+
+
+                <section class="mb-5 mt-5">
+                    <h3 class="h3 mb-4">
+                        Features
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Dual Watermarking Options" class="card-img-top mx-auto mt-3" height="100"
+                                    src="{% static 'images/dual.jpeg'%}"
+                                    style="width: 120px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Dual Watermarking Options
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Supports both text-based and image-based watermarks.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Custom Placement" class="card-img-top mx-auto mt-3" height="100"
+                                    src="{% static 'images/custom.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Custom Placement
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Users can select watermark position for better integration.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Fast processing feature icon" class="card-img-top mx-auto mt-3" height="100"
+                                    src="{% static 'images/ui.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Preserve image quality
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Our watermarking application preserves your images' visual integrity
+                                        invisibly, maintaining aesthetics and quality.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Cross-platform compatibility feature icon" class="card-img-top mx-auto mt-3"
+                                    height="100" src="{% static 'images/data.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Content Protection
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Helps ensure ownership and prevent unauthorized distribution.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- [ Main Content ] end -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const downloadButton = document.getElementById("downloadButton");
+                        const previewContainer = document.getElementById("previewContainer");
+
+                        // Store download button visibility in session storage
+                        if (downloadButton) {
+                            sessionStorage.setItem("showDownload", "true");
+                        } else {
+                            sessionStorage.removeItem("showDownload");
+                        }
+
+                        // Restore download button visibility on reload
+                        if (sessionStorage.getItem("showDownload") === "true" && !downloadButton) {
+                            const downloadLink = document.createElement("a");
+                            downloadLink.href = "{{ download_url }}";
+                            downloadLink.download = "watermarked_image.jpg";
+
+                            const button = document.createElement("button");
+                            button.textContent = "Download Watermarked Image";
+                            button.id = "downloadButton";
+                            downloadLink.appendChild(button);
+
+                            document.body.appendChild(downloadLink);
+                        }
+
+                        // Auto-hide the preview image after 5 seconds
+                        if (previewContainer) {
+                            setTimeout(() => {
+                                previewContainer.style.display = "none";
+                            }, 10000);
+                        }
+                    });
+
+                    // Clear session storage on full reload
+                    window.addEventListener("beforeunload", function () {
+                        sessionStorage.removeItem("showDownload");
+                    });
+                </script>
+
+                <!-- Tampering js codes link -->
+                <script src="{% static 'js/tamper.js'%}"></script>
+
+                {% endblock %}

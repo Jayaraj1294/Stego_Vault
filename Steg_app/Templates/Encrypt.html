@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <section class="text-center mb-5">
+                            <h2 class="h2 mb-4">
+                                Hybrid Encryption
+                            </h2>
+                            <hr style="border-color: white;">
+                            <p class="text-muted mb-4">
+                                Secure your messages and files with cutting-edge hybrid encryption.
+                            </p>
+                            <p class="text-muted mb-4">
+                                Encrypt data with powerful algorithms for maximum security.
+                            </p>
+                            <hr style="border-color: white;">
+                            <img alt="A detailed illustration of image steganography process" class="img-fluid mb-4"
+                                height="400" src="{% static 'images/Cryptography2.jpg'%}" width="600"
+                                style="border-radius: 30px;" />
+
+                            <hr style="border-color: white;">
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h3 mb-4">
+                                How It Works
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 1: Enter a Title" class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/text.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 1: Enter Your Data
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Provide a title and enter the text message you want to encrypt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="card">
+                                        <img alt="Step 2: Choose encryption method" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/input.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 2: Hybrid Encryption
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                The system uses a combination of AES and RSA for secure encryption.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 2: Select Analysis Method" class="card-img-top mx-auto mt-3"
+                                            height="100" src="{% static 'images/encrypt.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 3: Encrypt Your Message
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Click the encrypt button to secure your message with hybrid
+                                                cryptography.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img alt="Step 4: Copy or Download Encrypted Data"
+                                            class="card-img-top mx-auto mt-3" height="100"
+                                            src="{% static 'images/Download.jpg'%}"
+                                            style="width: 100px; height: 100px; border-radius: 20%;" width="100" />
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">
+                                                Step 4: Copy or Download
+                                            </h4>
+                                            <p class="card-text text-muted">
+                                                Copy the encrypted output or download the ciphertext for secure storage.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Encryption Process</h5>
+                                    </div>
+                                    <div class="card-block">
+                                        <form action="{% url 'Encrypt'%}" method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <!-- Enter Title -->
+                                            <div class="mb-3">
+                                                <label for="title" class="form-label">Title</label>
+                                                <input class="form-control" type="text" name="title" id="title"
+                                                    placeholder="Enter your title here....">
+                                            </div>
+
+                                            <!-- Enter Message -->
+                                            <div class="mb-3">
+                                                <label for="message" class="form-label">Message</label>
+                                                <textarea class="form-control" id="message" name="message" rows="3"
+                                                    placeholder="Enter your message here..."></textarea>
+                                            </div>
+
+                                            <!-- Encryption Algorithm -->
+                                            <div class="form-group">
+                                                <label for="algorithm">
+                                                    Encryption Algorithm
+                                                </label>
+                                                <input class="form-control" id="algorithm" name="algorithm"
+                                                    value="AES + RSA   (Hybrid Cryptography)" readonly disabled>
+                                            </div>
+
+                                            <!-- Encrypt Button -->
+                                            <div class="d-flex justify-content-between">
+                                                <button type="submit" class="btn btn-success" style="font-size: medium; font-weight: 800;">Encrypt</button>
+                                                <a type="submit" href="{% url 'Decrypt'%}"
+                                                    class="btn btn-outline-primary" style="font-size: medium; font-weight: 800;">Decryption</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if success %}
+                <div class="row" id="messagecontainer">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Encrypted Data</h5>
+                            </div>
+                            <div class="card-block">
+                                <label class="form-label">Ciphertext</label>
+                                <textarea id="ciphertext" class="form-control" rows="3"
+                                    readonly>{{ ciphertext }}</textarea>
+                                <button class="btn btn-primary mt-3" onclick="copyText()">Copy</button>
+                                <button class="btn btn-secondary mt-3"
+                                    onclick="downloadCiphertext('{{ enc_id }}')">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <section class="mb-5">
+                    <h3 class="h3 mb-4">
+                        Features
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="High security feature icon" class="card-img-top mx-auto mt-3" height="100"
+                                    src="{% static 'images/encrypt1.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Hybrid Encryption (AES + RSA)
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Combines AES for fast encryption and RSA for secure key exchange,
+                                        ensuring strong protection.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="User-friendly interface feature icon" class="card-img-top mx-auto mt-3"
+                                    height="100" src="{% static 'images/file.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Secure Message Storage
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Encrypted messages are safely stored in the database for future retrieval.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Fast processing feature icon" class="card-img-top mx-auto mt-3" height="100"
+                                    src="{% static 'images/input.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Quick and Efficient Encryption
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Optimized encryption process for fast and secure message encoding.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <img alt="Cross-platform compatibility feature icon" class="card-img-top mx-auto mt-3"
+                                    height="100" src="{% static 'images/download.jpg'%}"
+                                    style="width: 110px; height: 100px; border-radius: 20%;" width="100" />
+                                <div class="card-body text-center">
+                                    <h4 class="card-title h5">
+                                        Easy Access and Download
+                                    </h4>
+                                    <p class="card-text text-muted">
+                                        Encrypted data can be copied or downloaded for further use.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <script>
+                    function copyText() {
+                        navigator.clipboard.writeText(document.getElementById("ciphertext").textContent);
+                        alert("Ciphertext copied")
+                    }
+                    function downloadCiphertext(enc_id) {
+                        if (!enc_id) {
+                            alert("Encryption ID not found.");
+                            return;
+                        }
+                        window.location.href = `/DownloadCiphertext/${enc_id}/`;
+                    }
+                    // Message timer code
+                    setTimeout(function () {
+                        let alert = document.querySelector(".alert");
+                        if (alert) {
+                            alert.style.display = "none";
+                        }
+                    }, 3000);
+                </script>
+                {% endblock %}

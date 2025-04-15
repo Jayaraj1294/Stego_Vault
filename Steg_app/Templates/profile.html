@@ -1,0 +1,408 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /*  Profile modal code */
+    .modal1 {
+        display: none;
+        /* Hide modal initially */
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 350px;
+        height: fit-content;
+        background-color: #082032;
+        border: 1px solid white;
+        padding: 30px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 #082032, 0 6px 20px 0 #082032;
+    }
+
+    .modal-content1 {
+        text-align: center;
+    }
+
+    .modal1 .btn {
+        margin: 10px;
+    }
+    
+    /* Delete Modal code */
+    .modal-content {
+        padding: 20px;
+        padding-bottom: 20px;
+        width: fit-content;
+        background-color: #082032;
+        border: 1px solid white;
+        text-align: center;
+    }
+
+    .modal .btn {
+        margin: 10px;
+    }
+
+</style>
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-8">
+
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" id="pills-home-tab" data-toggle="pill"
+                                            href="#pills-home" role="tab" aria-controls="pills-home"
+                                            aria-selected="true">Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                            href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                            aria-selected="false">Update Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-account-tab" data-toggle="pill"
+                                            href="#pills-account" role="tab" aria-controls="pills-account"
+                                            aria-selected="false">Account</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade active show" id="pills-home" role="tabpanel"
+                                        aria-labelledby="pills-home-tab">
+                                        <div class="card-block">
+                                            <form method="POST" action="{% url 'profile' %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-sm-6 mb-3">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Username</label>
+                                                            <input class="form-control" id="username" name="username"
+                                                                 value="{{user.username}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail2">Email address</label>
+                                                            <input type="email" class="form-control" id="email"
+                                                                name="email" value="{{user.email}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3">
+                                                        <div class="form-group">
+                                                            <label for="applicationPurpose">Purpose of Using the
+                                                                Application</label>
+                                                            <select class="form-control" id="applicationPurpose"
+                                                                name="purpose">
+                                                                <option value="" disabled>Select an option</option>
+                                                                <option value="student" {% if user.purpose == "student" %}selected{% endif %}>
+                                                                    Student - Learning, Research, or Projects
+                                                                </option>
+                                                                <option value="work" {% if user.purpose == "work" %}selected{% endif %}>
+                                                                    Work - Professional or Business Use
+                                                                </option>
+                                                                <option value="both" {% if user.purpose == "both" %}selected{% endif %}>
+                                                                    Both (Student & Work)
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 mb-3">
+                                                        <div class="form-group">
+                                                            <label for="abt">About Info</label>
+                                                            <textarea class="form-control" id="abt" name="bio"
+                                                                placeholder="Bio">{{ user.bio }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 mb-2">
+                                                        <div class="form-group">
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                        aria-labelledby="pills-profile-tab">
+                                        <form method="POST" action="{% url 'update_username' %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12 shadow-sm">
+                                                <h5 class="mb-3">Update Username</h5>
+                                                <div class="form-group">
+                                                    <label for="new_username">Change Username</label>
+                                                    <input type="text" class="form-control" id="new_username"
+                                                        name="new_username" placeholder="Enter new username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Password">Password</label>
+                                                    <input type="password" class="form-control" id="Password"
+                                                        name="current_password" placeholder="Enter your password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 mb-2">
+                                                <button type="submit" class="btn btn-primary">Update Username</button>
+                                            </div>
+                                        </form>
+                                        <hr>
+                                        <form method="POST" action="{% url 'update_email' %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12 shadow-sm">
+                                                <h5 class="mb-3">Update Email</h5>
+                                                <div class="form-group">
+                                                    <label for="changeEmail">Change Email</label>
+                                                    <input type="email" class="form-control" id="changeEmail"
+                                                        name="new_email" placeholder="Enter new email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Password">Password</label>
+                                                    <input type="password" class="form-control" id="Password"
+                                                        name="current_password" placeholder="Enter your password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 mb-2">
+                                                <button type="submit" class="btn btn-primary">Update Email</button>
+                                            </div>
+                                        </form>
+                                        <hr>
+                                        <form method="POST" action="{% url 'update_password' %}">
+                                            {% csrf_token %}
+                                            <div class="col-sm-12 shadow-sm">
+                                                <h5 class="mb-3">Change Password</h5>
+                                                <div class="form-group">
+                                                    <label for="currentPassword">Current Password</label>
+                                                    <input type="password" class="form-control" id="currentPassword"
+                                                        name="old_password" placeholder="Enter current password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 mb-3">
+                                                <div class="form-group">
+                                                    <label for="newPassword">New Password</label>
+                                                    <input type="password" class="form-control" id="newPassword"
+                                                        name="new_password" placeholder="Enter new password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 mb-3">
+                                                <div class="form-group">
+                                                    <label for="confirmPassword">Confirm New Password</label>
+                                                    <input type="password" class="form-control" id="confirmPassword"
+                                                        name="confirm_password" placeholder="Confirm new password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 mb-2">
+                                                <button type="submit" class="btn btn-primary">Update Password</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab">
+                                        <div class="col-sm-12 shadow-sm">
+                                            <form id="deleteAccountForm" method="POST">
+                                                {% csrf_token %}
+                                                <h5 class="mb-3 text-danger">Delete Account</h5>
+                                                <p class="text-muted">Once you delete your account, there is no going back. Please be certain.</p>
+                                                <div class="form-group">
+                                                    <label for="deletePassword">Enter Password to Confirm</label>
+                                                    <input type="password" class="form-control" id="deletePassword" name="password" placeholder="Enter password" required>
+                                                </div>
+                                                <div class="text-right">
+                                                    <button type="button" class="btn btn-danger" onclick="verifyPassword()">Delete Account</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Confirmation Modal -->
+                                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-danger" id="confirmDeleteLabel">Confirm Account Deletion</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete your account? This action cannot be undone.
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button type="button" class="btn btn-danger" onclick="submitDeleteForm()">Yes, Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                   
+
+                                    
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="d-flex align-items-center justify-content-center flex-column">
+                                            <form method="POST" action="{% url 'update_profile_picture' %}" enctype="multipart/form-data" id="profileForm">
+                                                {% csrf_token %}
+                                                <div class="profile-picture position-relative">
+                                                    <img id="profileImage" src="{{ user.profile_picture.url }}" alt="profile image"
+                                                        class="img-fluid rounded-circle" style="height: 200px; width: 200px;">
+                                            
+                                                    <!-- Hidden File Input -->
+                                                    <input type="file" id="uploadPhoto" name="profile_picture" accept="image/*" hidden>
+                                            
+                                                    <!-- Pencil Icon Overlay (Triggers File Upload) -->
+                                                    <span class="edit-icon" onclick="document.getElementById('uploadPhoto').click();">
+                                                        <i class="icon feather icon-edit" ></i>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                            
+                                            <!-- Modal for Image Preview and Submit Button -->
+                                            <div id="previewModal" class="modal1" style="display: none;">
+                                                <div class="modal-content1 text-center justify-content-center">
+                                                    <h5 class="mb-3">Preview & Upload</h5>
+                                                    <div class="img justify-content-center">
+                                                        <img id="previewImage" class="img-fluid rounded-circle mb-2" style="width: 200px; height: 200px;">
+                                                    </div>
+                                                    <button id="submitBtn" class="btn btn-primary">Upload</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <script>
+                                                document.getElementById("uploadPhoto").addEventListener("change", function(event) {
+                                                    let file = event.target.files[0];
+                                                    if (file) {
+                                                        let reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            document.getElementById("previewImage").src = e.target.result;
+                                                            document.getElementById("previewModal").style.display = "block"; // Show modal
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    }
+                                                });
+                                            
+                                                document.getElementById("submitBtn").addEventListener("click", function() {
+                                                    document.getElementById("profileForm").submit(); // Auto-submit form
+                                                });
+                                            </script>
+                                            
+
+                                                <div class="text-center mt-2">
+                                                    <h4 class="font-weight-bold h6">
+                                                        {{ user.username }}
+                                                    </h4>
+                                                    <p class="font-weight-light">
+                                                        {{ user.email }}
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="small font-weight-light mt-4 text-center text-muted">
+                                            <h4 class="font-weight-bold h6">
+                                                Bio
+                                            </h4>
+                                            <p>
+                                            {{ user.bio|default:"No bio available." }}
+                                            </p>
+                                            <br>
+                                            <h4 class="font-weight-bold h6">
+                                                Purpose
+                                            </h4>
+                                            <p>
+                                            {% if user.purpose == "student" %}
+                                            Student - Learning, Research, or Projects
+                                            {% elif user.purpose == "work" %}
+                                            Work - Professional or Business Use
+                                            {% elif user.purpose == "both" %}
+                                            Both (Student & Work)
+                                            {% else %}
+                                            Not specified
+                                            {% endif %}
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="#" class="social-icon m-2">
+                                                <i class="fa-brands fa-github"></i>
+                                            </a>
+                                            <a href="#" class="social-icon m-2">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function verifyPassword() {
+        var password = $("#deletePassword").val();
+    
+        if (password.trim() === "") {
+            alert("Please enter your password.");
+            return;
+        }
+    
+        $.ajax({
+            type: "POST",
+            url: "{% url 'profilecheck_password' %}",  // URL to verify password
+            data: {
+                password: password,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function (response) {
+                if (response.valid) {
+                    $("#confirmDeleteModal").modal("show");  // Show confirmation modal
+                } else {
+                    alert("Incorrect password. Please try again.");
+                }
+            },
+            error: function () {
+                alert("An error occurred. Please try again.");
+            }
+        });
+    }
+    
+    function submitDeleteForm() {
+        $.ajax({
+            type: "POST",
+            url: "{% url 'delete_account' %}",  // URL to delete the account
+            data: {
+                password: $("#deletePassword").val(),
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function (response) {
+                if (response.deleted) {
+                    alert("Your account has been successfully deleted.");
+                    window.location.href = "{% url 'home' %}";  // Redirect to home after deletion
+                } else {
+                    alert("Account deletion failed.");
+                }
+            },
+            error: function () {
+                alert("An error occurred while deleting your account.");
+            }
+        });
+    }
+    </script>
+    
+
+<!-- [ Main Content ] end -->
+{% endblock %}
