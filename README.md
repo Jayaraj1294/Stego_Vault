@@ -27,7 +27,7 @@ Whether you're a student, researcher, or security professional, Stego_Vault lets
   - `cryptography` library (AES & RSA)
   - `hashlib` for SHA-256 hashing
   - `OpenCV` for steganography and watermark embedding
-  - `Django Channels` for real-time updates
+  - `Django Messages` for real-time updates
 
 ---
 
