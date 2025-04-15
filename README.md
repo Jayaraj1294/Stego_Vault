@@ -2,7 +2,7 @@
 
 **StegoVault** is a powerful web application designed to protect, hide, and verify sensitive information within images. Built with Django and packed with security-first features, it brings together encryption, steganography, watermarking, and tamper detection — all in one intuitive platform.
 
-Whether you're a student, researcher, or security professional, StegoVault lets you securely embed encrypted data in images, verify file authenticity, and prevent unauthorized access — all through a clean, responsive interface.
+Whether you're a student, researcher, or security professional, Stego_Vault lets you securely embed encrypted data in images, verify file authenticity, and prevent unauthorized access — all through a clean, responsive interface.
 
 ---
 
