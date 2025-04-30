@@ -115,7 +115,7 @@ class EncryptedMessage(models.Model):
     def __str__(self):
         return f"Message {self.id} - {self.title}"
     
-# Watemark key and hashing table
+# Watermark key and hashing table
 class WatermarkKey(models.Model):
     image = models.OneToOneField(UploadedImage, on_delete=models.CASCADE, related_name='watermark_key')  # Ensure one key per image
     encrypted_aes_key = models.BinaryField() # Store AES key with RSA

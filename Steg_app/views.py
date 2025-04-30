@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.files.storage import FileSystemStorage
+# from django.core.files.storage import FileSystemStorage
 from django.core.files.base import ContentFile
 from django.conf import settings
 from django.contrib.auth import logout, update_session_auth_hash
@@ -11,16 +11,16 @@ from django.core.mail import send_mail
 from django.utils.timezone import now, timedelta
 from datetime import date
 from django.db.models.functions import TruncDate
-from django.contrib.messages import get_messages
+# from django.contrib.messages import get_messages
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
 from django.http import FileResponse, Http404
 import os
 import cv2
 import numpy as np
-from PIL import Image
+# from PIL import Image
 import hashlib
-from django.db.models import Q
+# from django.db.models import Q
 from .models import *
 from .crypto_utils import encrypt_message, decrypt_message
 from .encode import encode_image
@@ -701,6 +701,8 @@ def Encrypt(request):
                 "success": True,
                 "ciphertext": enc_msg.hex(),
                 "enc_id" : encrypted_instance.id,
+                'notifications' : notifications,
+                'user':username,
             })
         except Exception as e:
             return render(request,"Encrypt.html",{"error":f"Encryption failed: {str(e)}"})
@@ -1037,17 +1039,19 @@ def Guide(request):
 
 # Contact Views
 def Support(request):
+    usernm = UserRegistration.objects.get(id=request.session['userid'])
+    notifications = Notification.objects.filter(user=usernm).order_by('-timestamp')
+    
     if request.method == "POST":
         subject = request.POST.get("subject")
         message = request.POST.get("message")
 
         if request.session.get('userid'):
-            user = UserRegistration.objects.get(id=request.session['userid'])
+            user = usernm
             name = user.username
             email = user.email
             user_info = f"User ID: {user.id}\n Name: {name} \n Email: {email}"
-
-
+            
         if name and email and subject and message:
             # Send Email
             send_mail(
@@ -1065,5 +1069,10 @@ def Support(request):
             return redirect("Support")
         else:
             messages.error(request,"All fields are required")
+        
+    context={
+    'user':usernm,
+    'notifications' : notifications,
+    }
 
-    return render(request, 'guide.html')
+    return render(request, 'guide.html',context)

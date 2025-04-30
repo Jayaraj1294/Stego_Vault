@@ -2,7 +2,7 @@
 # This module provides functionality to encode a secret message into an image using LSB steganography.
 
 import cv2
-import numpy as np
+# import numpy as np
 from .utility import text_to_binary
 
 def encode_image(image_path, secret_message, output_path):
